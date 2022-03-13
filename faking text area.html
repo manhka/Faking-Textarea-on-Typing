@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Faking Textarea on Typing</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+</head>
+<body>
+<center>
+    <b>TYPING ANYTHING</b>
+    <textarea onkeydown="Typing()" name="text" id="text" cols="30" rows="10"></textarea>
+</center>
+</body>
+</html>
+<script>
+    let String = ' Bạn thật là đẹp troai!!'
+    let arr = [];
+    arr = String.split('')
+    console.log('arr==', arr)
+    let x = '';
+
+    function Typing() {
+        let type = document.getElementById('text').value
+        for (let i = 1; i <= type.length; i++) {
+            x += arr[i];
+            if (i === 24) {
+                document.getElementById('text').value = ''
+                x = '';
+            }
+        }
+        document.getElementById('text').value = x;
+        x = '';
+        setTimeout(Typing, 1);
+    }
+</script>
